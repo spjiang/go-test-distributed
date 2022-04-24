@@ -9,19 +9,20 @@ import (
 )
 
 func main() {
-	// 注册http route , 与http server 绑定 registry.RegistryService
+	registry.SetupRegistryService()
 	http.Handle("/services", &registry.RegistryService{})
+
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
+
 	var srv http.Server
 	srv.Addr = registry.ServerPort
+
 	go func() {
-		// 启动HTTP服务
 		log.Println(srv.ListenAndServe())
 		cancel()
 	}()
 
-	// 监听终端输入信号
 	go func() {
 		fmt.Println("Registry service started. Press any key to stop.")
 		var s string
@@ -31,6 +32,5 @@ func main() {
 	}()
 
 	<-ctx.Done()
-
-	fmt.Println("shutting done registry  service.")
+	fmt.Println("Shutting down registry service")
 }

@@ -7,17 +7,12 @@ import (
 	"os"
 )
 
-/*
- * 可运行的日志服务
- *
- */
 var log *stlog.Logger
 
 type fileLog string
 
-// Write 集成io write
 func (fl fileLog) Write(data []byte) (int, error) {
-	f, err := os.OpenFile(string(fl), os.O_CREATE|os.O_RDWR|os.O_APPEND, 0644)
+	f, err := os.OpenFile(string(fl), os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0600)
 	if err != nil {
 		return 0, err
 	}
@@ -25,13 +20,10 @@ func (fl fileLog) Write(data []byte) (int, error) {
 	return f.Write(data)
 }
 
-// Run 服务启动
 func Run(destination string) {
-	// 创建一个log服务
-	log = stlog.New(fileLog(destination), "[go]- ", stlog.LstdFlags)
+	log = stlog.New(fileLog(destination), "[go] - ", stlog.LstdFlags)
 }
 
-// RegisterHandlers 注册HTTP方法，用于日志数据接收
 func RegisterHandlers() {
 	http.HandleFunc("/log", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
@@ -49,7 +41,6 @@ func RegisterHandlers() {
 	})
 }
 
-// write 服务端日志打印
 func write(message string) {
 	log.Printf("%v\n", message)
 }

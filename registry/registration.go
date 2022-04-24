@@ -1,18 +1,19 @@
 package registry
 
-type ServiceName string
-
 type Registration struct {
-	ServiceName ServiceName
-	ServiceURL  string
-	// 服务依赖三方服务
+	ServiceName      ServiceName
+	ServiceURL       string
 	RequiredServices []ServiceName
 	ServiceUpdateURL string
+	HeartbeatURL     string
 }
 
+type ServiceName string
+
 const (
-	LogService   = ServiceName("LogService")
-	GradeService = ServiceName("GradeService")
+	LogService     = ServiceName("LogService")
+	GradingService = ServiceName("GradingService")
+	PortalService  = ServiceName("Portald")
 )
 
 type patchEntry struct {

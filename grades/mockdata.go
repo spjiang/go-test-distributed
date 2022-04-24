@@ -26,35 +26,57 @@ func init() {
 		},
 		{
 			ID:        2,
-			FirstName: "Jon",
-			LastName:  "Steven",
+			FirstName: "Roberto",
+			LastName:  "Baggio",
 			Grades: []Grade{
 				{
 					Title: "Quiz 1",
 					Type:  GradeQuiz,
-					Score: 81,
+					Score: 100,
 				},
 				{
 					Title: "Final Exam",
 					Type:  GradeExam,
-					Score: 92,
+					Score: 100,
 				},
 				{
 					Title: "Quiz 2",
 					Type:  GradeQuiz,
-					Score: 87,
+					Score: 81,
 				},
 			},
 		},
 		{
 			ID:        3,
-			FirstName: "Li",
-			LastName:  "Na",
+			FirstName: "Emma",
+			LastName:  "Stone",
 			Grades: []Grade{
 				{
 					Title: "Quiz 1",
 					Type:  GradeQuiz,
-					Score: 96,
+					Score: 67,
+				},
+				{
+					Title: "Final Exam",
+					Type:  GradeExam,
+					Score: 0,
+				},
+				{
+					Title: "Quiz 2",
+					Type:  GradeQuiz,
+					Score: 75,
+				},
+			},
+		},
+		{
+			ID:        4,
+			FirstName: "Rachel",
+			LastName:  "McAdams",
+			Grades: []Grade{
+				{
+					Title: "Quiz 1",
+					Type:  GradeQuiz,
+					Score: 98,
 				},
 				{
 					Title: "Final Exam",
@@ -64,7 +86,29 @@ func init() {
 				{
 					Title: "Quiz 2",
 					Type:  GradeQuiz,
-					Score: 98,
+					Score: 94,
+				},
+			},
+		},
+		{
+			ID:        5,
+			FirstName: "Kelly",
+			LastName:  "Clarkson",
+			Grades: []Grade{
+				{
+					Title: "Quiz 1",
+					Type:  GradeQuiz,
+					Score: 95,
+				},
+				{
+					Title: "Final Exam",
+					Type:  GradeExam,
+					Score: 100,
+				},
+				{
+					Title: "Quiz 2",
+					Type:  GradeQuiz,
+					Score: 97,
 				},
 			},
 		},

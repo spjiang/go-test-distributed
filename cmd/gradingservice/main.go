@@ -13,11 +13,13 @@ import (
 func main() {
 	host, port := "localhost", "6000"
 	serviceAddress := fmt.Sprintf("http://%v:%v", host, port)
+
 	r := registry.Registration{
-		ServiceName:      registry.GradeService,
+		ServiceName:      registry.GradingService,
 		ServiceURL:       serviceAddress,
 		RequiredServices: []registry.ServiceName{registry.LogService},
 		ServiceUpdateURL: serviceAddress + "/services",
+		HeartbeatURL:     serviceAddress + "/heartbeat",
 	}
 	ctx, err := service.Start(context.Background(),
 		host,
@@ -34,5 +36,5 @@ func main() {
 	}
 
 	<-ctx.Done()
-	fmt.Println("Shutting down grading service.")
+	fmt.Println("Shutting down grading service")
 }
